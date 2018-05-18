@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Text;
 using AgendaVacinacao.Models;
 
 namespace AgendaVacinacao.Dalc
 {
-    interface ISchemaDB
+    public interface ISchemaDB
     {
-        Schema GetSchema(Guid schemaId);
-        IEnumerable<Schema> GetSchemas(Guid OwnerPersonId);
-        void SaveSchema(Schema schema);
+        Task<Schema> GetSchema(Guid schemaId);
+        Task<IEnumerable<Schema>> GetSchemas(Guid OwnerPersonId);
+        Task SaveSchema(Schema schema);
     }
 }

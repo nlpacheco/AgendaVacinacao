@@ -12,6 +12,7 @@ namespace AgendaVacinacao.Models
         public string Description { get; set; }
         public IEnumerable<VaccineType> VaccineTypes { get; set; }
 
+
         public Vaccine()
         {
             VaccineTypes = new List<VaccineType>();

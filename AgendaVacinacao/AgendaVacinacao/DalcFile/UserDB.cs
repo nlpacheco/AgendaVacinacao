@@ -1,5 +1,6 @@
 ﻿using AgendaVacinacao.Dalc;
 using AgendaVacinacao.Models;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,14 @@ namespace AgendaVacinacao.DalcFile
         private const string _filename = "AGVusers.json";
         GenericFileRepository<User, string> _repository = new GenericFileRepository<User, string>(_filename);
 
-        public User GetUserByEmail(string userEmail)
+        public async Task<User> GetUserByEmail(string userEmail)
         {
-            return _repository.GetEntity(userEmail);
+            return await _repository.GetEntityAsync(userEmail);
         }
 
-        public void SaveUser(User user)
+        public async Task SaveUser(User user)
         {
-            _repository.SaveEntity(user);
+            await _repository.SaveEntityAsync(user);
         }
     }
 }

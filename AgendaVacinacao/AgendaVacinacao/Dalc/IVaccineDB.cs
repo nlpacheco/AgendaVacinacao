@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Text;
 using AgendaVacinacao.Models;
 
 namespace AgendaVacinacao.Dalc
 {
-    interface IVaccineDB
+    public interface IVaccineDB
     {
-        IEnumerable<Vaccine> GetAllVaccines();
+        Task<IEnumerable<Vaccine>> GetAllVaccines();
 
-        void SaveVaccine(Vaccine vaccine);
+        Task SaveVaccine(Vaccine vaccine);
+        Task SaveAllVaccines(IEnumerable<Vaccine> vaccines);
     }
 }

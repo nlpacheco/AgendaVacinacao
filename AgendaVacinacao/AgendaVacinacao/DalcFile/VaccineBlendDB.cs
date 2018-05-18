@@ -3,6 +3,7 @@ using AgendaVacinacao.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AgendaVacinacao.DalcFile
 {
@@ -11,19 +12,19 @@ namespace AgendaVacinacao.DalcFile
         private const string _filename = "AGVVaccineBlend.json";
         GenericFileRepository<VaccineBlend, Guid> _repository = new GenericFileRepository<VaccineBlend, Guid>(_filename);
 
-        public IEnumerable<Models.VaccineBlend> GetAllBlends()
+        public async Task<IEnumerable<VaccineBlend>> GetAllBlends()
         {
-            return _repository.GetAllEntities();
+            return await _repository.GetAllEntitiesAsync();
         }
 
-        public void SaveBlend(Models.VaccineBlend blend)
+        public async Task SaveBlend(VaccineBlend blend)
         {
-            _repository.SaveEntity(blend);
+            await _repository.SaveEntityAsync(blend);
         }
 
-        public void SaveAllBlends(IEnumerable<VaccineBlend> blends)
+        public async Task SaveAllBlends(IEnumerable<VaccineBlend> blends)
         {
-            _repository.SaveAllEntities(blends);
+            await _repository.SaveAllEntitiesAsync(blends);
         }
     }
 }

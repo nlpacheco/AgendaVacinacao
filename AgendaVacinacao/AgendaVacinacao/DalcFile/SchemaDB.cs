@@ -3,6 +3,7 @@ using AgendaVacinacao.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AgendaVacinacao.DalcFile
 {
@@ -11,19 +12,19 @@ namespace AgendaVacinacao.DalcFile
         private const string _filename = "AGVSchema.json";
         GenericFileRepository<Schema, Guid> _repository = new GenericFileRepository<Schema, Guid>(_filename);
 
-        public Schema GetSchema(Guid schemaId)
+        public async Task <Schema> GetSchema(Guid schemaId)
         {
-           return _repository.GetEntity(schemaId);
+           return await _repository.GetEntityAsync(schemaId);
         }
 
-        public IEnumerable<Schema> GetSchemas(Guid OwnerPersonId)
+        public async Task<IEnumerable<Schema>> GetSchemas(Guid OwnerPersonId)
         {
-            return _repository.GetEntities(s => s.OwnerId == OwnerPersonId);
+            return await _repository.GetEntitiesAsync(s => s.OwnerId == OwnerPersonId);
         }
 
-        public void SaveSchema(Schema schema)
+        public async Task SaveSchema(Schema schema)
         {
-            _repository.SaveEntity(schema);
+            await _repository.SaveEntityAsync(schema);
         }
     }
 }

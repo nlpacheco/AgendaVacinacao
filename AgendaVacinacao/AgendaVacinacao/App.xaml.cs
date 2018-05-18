@@ -1,5 +1,6 @@
 ﻿using System;
-
+using AgendaVacinacao.Dalc;
+using AgendaVacinacao.DalcFile;
 using AgendaVacinacao.Views;
 using Xamarin.Forms;
 
@@ -12,6 +13,9 @@ namespace AgendaVacinacao
 		{
 			InitializeComponent();
 
+
+            CurrentDataStore.CurrentDALC = new FileDataStore();
+            new MockVaccineDatabase();
 
             MainPage = new MainPage();
         }
