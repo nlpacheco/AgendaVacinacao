@@ -10,12 +10,17 @@ namespace AgendaVacinacao.Dalc
     {
         private List<Models.Vaccine> ListVaccine;
 
-        public MockVaccineDatabase()
+        public static void MockVaccineDataStore()
+        {
+            new MockVaccineDatabase();
+        }
+
+
+        private  MockVaccineDatabase()
         {
             MockVaccines();
             MockFamilyPeople();
         }
-
 
         private async void MockFamilyPeople()
         {

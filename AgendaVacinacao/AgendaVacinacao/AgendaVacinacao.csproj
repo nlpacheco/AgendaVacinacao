@@ -8,6 +8,7 @@
     <PackageReference Include="AWSSDK.Core" Version="3.3.22.5" />
     <PackageReference Include="CouchbaseNetClient" Version="2.5.10" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
   </ItemGroup>
 
@@ -46,6 +47,10 @@
     <EmbeddedResource Update="Views\VaccineListViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Settings\" />
   </ItemGroup>
 
 </Project>

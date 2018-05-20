@@ -9,16 +9,9 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-                
-                <Label Text="{Binding Vaccine.Name}" FontSize="Small"/>
-                
-                <Label Text="Description:" FontSize="Medium" />
-                <Label Text="{Binding Vaccine.Description}" FontSize="Small"/>
-
-
-        </StackLayout>
-
-        <StackLayout>
+            <Label Text="{Binding Vaccine.Name}" FontSize="Small"/>
+            <Label Text="Description:" FontSize="Medium" />
+            <Label Text="{Binding Vaccine.Description}" FontSize="Small"/>
             <ListView x:Name="FamilyListView" 
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"

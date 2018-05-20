@@ -36,5 +36,17 @@ namespace AgendaVacinacao.Views
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var vaccine = args.SelectedItem as Vaccine;
+            if (vaccine == null)
+                return;
+
+            await Navigation.PushAsync(new VaccineDetailPage(vaccine));
+
+            // Manually deselect item.
+            FamilyListView.SelectedItem = null;
+        }
+
     }
 }

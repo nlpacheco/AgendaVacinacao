@@ -1,21 +1,37 @@
 ﻿using System;
-using AgendaVacinacao.Dalc;
-using AgendaVacinacao.DalcFile;
-using AgendaVacinacao.Views;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
+using AgendaVacinacao.Shared.NavController;
+using AgendaVacinacao.Views;
 
 namespace AgendaVacinacao
 {
 	public partial class App : Application
 	{
+        public static App Instance => (App)Current;
 
-		public App ()
+        public readonly INavigationService NavigationService;
+        public readonly INavController NavController;
+
+
+        public App ()
 		{
 			InitializeComponent();
 
+            
+            IDictionary<NavigationController.Map, Type> fullmap = new Dictionary<NavigationController.Map, Type>
+            {
+                { NavigationController.Map.Create(0, typeof(Views.MainPage)), typeof(AboutPage) },
+                { NavigationController.Map.Create(1, typeof(Views.MainPage)), typeof(VaccineListViewPage) }
+            };
 
-            CurrentDataStore.CurrentDALC = new FileDataStore();
-            new MockVaccineDatabase();
+
+            NavigationService = new NavigationService(new MainPage());
+            NavController = new NavigationController(NavigationService, fullmap);
+            AppSettings.AppSet();
+
+
 
             MainPage = new MainPage();
         }
